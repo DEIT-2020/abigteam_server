@@ -106,6 +106,13 @@
 // }
 import 'heroes.dart';
 import 'controller/heroes_controller.dart';
+import 'controller/home_controller.dart';
+import 'controller/login_controller.dart';
+import 'controller/history_controller.dart';
+import 'controller/report_controller.dart';
+import 'controller/experiment_controller.dart';
+import 'controller/trash_controller.dart';
+import 'controller/app_controller.dart';
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
@@ -154,6 +161,27 @@ class HeroesChannel extends ApplicationChannel {
      router
       .route('/heroes')
       .link(() => HeroesController(context));
+       router
+      .route('/app')
+      .link(() => AppController(context));
+      router
+      .route('/login')
+      .link(() => LoginController(context));
+      router
+      .route('/home')
+      .link(() => HomeController(context));
+      router
+      .route('/experiment')
+      .link(() => ExperimentController(context));
+      router
+      .route('/trash')
+      .link(() => TrashController(context));
+      router
+      .route('/report')
+      .link(() => ReportController(context));
+        router
+      .route('/history')
+      .link(() => HistoryController(context));
     return router;
   }
 }
