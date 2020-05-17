@@ -1,6 +1,6 @@
 database:
   host: 13.115.53.84
   port: 5432
-  username: iflyup
+  username: abigteam
   password: 729at3663
-  databaseName: abigteam
+  databaseName: abigteam_db
