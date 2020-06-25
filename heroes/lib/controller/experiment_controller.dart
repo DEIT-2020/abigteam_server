@@ -1,6 +1,7 @@
 import 'package:aqueduct/aqueduct.dart';
 import 'package:heroes/heroes.dart';
-import 'package:heroes/model/hero.dart';
+import 'package:heroes/model/user.dart';
+// import 'package:heroes/model/experiment.dart';
 
 // class HeroesController extends ResourceController {
 //   HeroesController(this.context);
@@ -106,6 +107,62 @@ import 'package:heroes/model/hero.dart';
 // import 'package:heroes/heroes.dart';
 // import 'package:heroes/model/hero.dart';
 class ExperimentController extends ResourceController {
-  
-  
+  ExperimentController(this.context);
+
+  final ManagedContext context;
+  //（前端给我们一对id；数组）
+
+@Operation.post()
+Future<Response> createNote() async {
+  final Map<String,dynamic> body = await request.body.decode();
+  final query = Query<User>(context)
+    ..values.username = body['username'] as String
+    ..values.i = body['i'] as int 
+    ..values.r =body['r'] as int
+    ..values.u = body['u'] as int;
+
+  final inserteduser = await query.insert();
+
+  return Response.ok(inserteduser);
 }
+}
+  //  @Operation.post()
+  //     FutureOr <Response> createChat(@Bind.body() Chat chat) async {
+  //       // POST /project
+
+  //       print("post");
+  //       final Map<String, dynamic> body = await request.body.decode();
+  //       final name =body['name'] as String;
+  //       print(" 1) name ==> $name");
+
+  //       //return Response.ok({"key": "value"});
+  //     }
+//   @Operation.post()//添加一篇文章
+//   FutureOr<Response> insertExperiment(
+//       @Bind.body() Experiment time) async {
+//     Experiment.time = DateTime.now();
+//   //  Experiment.u= new   
+// //插入一条数据
+//     final result = await context.insertObject<Experiment>(time);
+//     return Response.ok(result);
+//   }
+  // @Operation.post()
+  // Future<Response> addCity(@Bind.body() City city) async {
+  //   final insertedCity = await context.insertObject(city);
+
+  //   return Response.ok(insertedCity);
+  // }
+//    @Operation.post() //添加一篇文章
+//   FutureOr<Response> insertArticle(
+//       @Bind.body(ignore: ["createData"]) Article article) async {
+// //这里可以直接转为实体，但需要注意的是@Bind.body里的参数含义如下
+// //ignore表示忽略哪些字段
+// //reject表示拒绝接收哪些字段
+// //require表示哪些字段必须有
+// //啥都不填表示参数如果不传则为空
+//     article.createDate = DateTime.now();
+// //插入一条数据
+//     final result = await context.insertObject<Article>(article);
+//     return Result.data(result);
+//     return Response.ok(hero);
+//   }
