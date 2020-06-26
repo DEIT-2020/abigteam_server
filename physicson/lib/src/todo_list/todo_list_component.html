@@ -1,0 +1,91 @@
+<!-- Components info: https://angulardart.dev/components -->
+<!--div>
+  <material-input label="What do you need to do?"
+                  autoFocus floatingLabel style="width:80%"
+                  [(ngModel)]="newTodo"
+                  (keyup.enter)="add()">
+  </material-input>
+
+  <material-fab mini raised
+                (trigger)="add()"
+                [disabled]="newTodo.isEmpty">
+    <material-icon icon="add"></material-icon>
+  </material-fab>
+</div>
+
+<p *ngIf="items.isEmpty">
+  Nothing to do! Add items above.
+</p>
+
+<div *ngIf="items.isNotEmpty">
+  <ul>
+      <li *ngFor="let item of items; let i=index">
+        <material-checkbox #done materialTooltip="Mark item as done">
+        </material-checkbox>
+        <span [class.done]="done.checked">{{item}}</span>
+        <material-fab mini (trigger)="remove(i)">
+          <material-icon icon="delete"></material-icon>
+        </material-fab>
+      </li>
+  </ul>
+</div>
+<div (click)="changeNewTodoValue">点我修改newtodo</div-->
+  
+  <div id="global">
+    <div id="heading">
+      <material-drawer persistent #drawer="drawer" id="drawers" >
+        <div *deferredContent id="equipment">
+          <!-- Drawer content goes here -->
+          <div id="shiyanqicai">实验器材<material-icon icon="build"></material-icon></div>
+          <div id="dianziqicai" >
+          <div id="dianchizu" draggable="true" on-dragstart="move('#dianchizu')"><img src="picture/电池组.png"></div>
+          <p id="texte">电池组（E）</p>
+          <div id="dengpao" draggable="true" on-dragstart="move('#dengpao')"><img src="picture/灯泡.png"></div>
+          <p id="textl">灯泡（L）</p>
+          <div id="kaiguan" draggable="true" on-dragstart="move('#kaiguan')"><img src="picture/开关.png"></div>
+          <p id="texts">开关（S）</p>
+          <div id="dingzhidianzu" draggable="true" on-dragstart="move('#dingzhidianzu')"><img src="picture/定值电阻.png"></div>
+          <p id="textr">未知阻值电阻（R）</p>
+          <div id="A" draggable="true" on-dragstart="move('#A')"><img src="picture/电流表.png"></div>
+          <p id="texta">电流表（A）</p>
+          <div id="V" draggable="true" on-dragstart="move('#V')"><img src="picture/电压表.png"></div>
+          <p id="textv">电压表（V）</p>
+          <p id="tips">请将电子器材拖动至右边的实验区域</p>
+          <p id="tips2">有些器材是本实验非必须的哦</p>
+          </div>
+        </div>
+      </material-drawer>
+      <material-content>
+        <header class="material-header shadow" id="shadows">
+          <div class="material-header-row" id="mulu">
+            <!-- This button will toggle (open/close) the drawer -->
+            <material-button icon
+                class="material-drawer-button" (trigger)="drawer.toggle()">
+              <material-icon icon="menu"></material-icon>
+            </material-button>
+            <!-- Other header info goes here -->
+            <material-input id="myfilename" label="未命名文件"></material-input>
+            <material-icon icon="border_color" id="pencil" ></material-icon>
+            <!--material-icon icon="camera_alt" id="screenshot" (onclick)="shotscreen()"></material-icon-->
+            <material-icon icon="description" id="report"></material-icon>
+            <p id="producereport">生成报告</p>
+            <material-icon icon="delete" id="trash" (click)="inject()"></material-icon>
+            <p id="restart">重置</p>
+            <material-icon icon="add" id="lianxian" (click)="inject()"></material-icon>
+            <p id="startinject">连接电路</p>
+            <div id="touxiang"><img src="favicon.png" alt=""></div>
+            <!--material-icon icon="folderopen"></material-icon-->
+          </div>
+        </header>
+        <!--div id="gongju">
+          工具栏
+        </div-->
+      </material-content>
+    </div>
+    <!--div id="content_menu" draggable="true" on-dragstart="move()">
+      
+    </div-->
+    <div id="content_body" >
+      <material-chip id="injecttips" removeable='true' (remove)="removechip()">单击需要连接的物体，双击下一个需要连接的物体，则在这两个物体间连接了导线。注意：单击电压表，再双击所要与之并联的器件即可将电压表接入电路</material-chip>
+      <canvas id='mycanvas' dropzone="true"></canvas></div>
+    </div>

@@ -1,0 +1,278 @@
+/*ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  line-height: 3em;
+}
+
+li:hover {
+  background-color: #EEEEEE;
+}
+
+li material-checkbox {
+  vertical-align: middle;
+}
+
+li material-fab {
+  float: right;
+  vertical-align: middle;
+}
+
+.done {
+  text-decoration: line-through;
+}*/
+#global{
+/*设置宽度，设置百分比可以根据浏览器自适应宽度*/
+  width: 100%;
+  /*设置高度，950px是设置是实体高度，不能自适应的*/
+  height: 780px;
+  /*设置背景颜色，方便区分布局*/
+  background-color: #292c32; 
+}
+            /*定义头部布局，前面的div可以不用写，#号前面默认有个id，凡事定义了id的标签，都可以用#号来表示*/
+#heading{
+  width: 100%;
+  height: 80px;
+  background-color: #23272b;
+}
+/*#content_menu{
+  width: 18%;
+  height: 700px;
+  background-color: #292c32;
+  /*定义浮动，不定义的话，界面会乱
+  float: left;
+}*/
+#content_body{
+  width: 100%;
+  height: 700px;
+  /*background-color: #292c32;*/
+  background-color: #27292f;
+  float: right;
+}
+#mycanvas{
+  width:100%;
+  height:700px;
+
+  z-index: 10;
+}
+#mulu{
+  height:80px;
+  width:100%;
+  background-color:#23272b;
+}
+#shadows{
+  background-color:#23272b;
+  height:80px;
+}
+#myfilename{
+  margin-left:20px;
+  margin-top: 20px;
+  font-size:30px;
+  text-align: center;
+  width:30%;
+  font-family: 'Courier New', Courier, monospace;
+  color:whitesmoke;
+}
+#drawers{
+  background-color: rgba(255,255,255,0.1);
+}
+/*#equipment{
+  font-size:20px;
+  color:rgb(216, 216, 216);
+}*/
+#pencil{
+  margin-top:20px;
+  opacity:80%;
+}
+#report{
+  position:absolute;
+  right:194px;
+  
+}
+#report:hover{
+  position:absolute;
+  right:194px;
+  color:yellowgreen;
+  cursor:pointer;
+}
+#producereport{
+  position:absolute;
+  right:174px;
+  top:40px;
+  font-size: 15px;
+}
+#trash{
+  position:absolute;
+  right:120px;
+}
+#restart{
+  position:absolute;
+  right:115px;
+  top:40px;
+  font-size: 15px;
+}
+#lianxian{
+  position:absolute;
+  right:280px;
+}
+#lianxian:hover{
+  position:absolute;
+  right:280px;
+  color:yellowgreen;
+  cursor:pointer;
+}
+#startinject{
+  position:absolute;
+  top:40px;
+  right:260px;
+  font-size: 15px;
+}
+
+#trash:hover{
+  position:absolute;
+  right:120px;
+  color:yellowgreen;
+  cursor:pointer;
+}
+#touxiang{
+  position:absolute;
+  width:60px;
+  height:60px;
+  border-radius:30px;
+  overflow:hidden;
+  right:40px;
+  cursor:pointer;
+}
+#shiyanqicai{
+  margin-left:20px;
+  margin-top:20px;
+  font-size:30px;
+  color:rgb(216,216,216);
+  letter-spacing:5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#dianchizu{
+  position:absolute;
+  right:0px;
+  top:105px;
+  width:125px;
+  height:80px;
+  cursor:pointer;
+}
+#texte{
+  position:absolute;
+  right:15px;
+  top:70px;
+  font-size: 15px;
+  color:rgb(216,216,216);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#dengpao{
+  position:absolute;
+  top:105px;
+  left:0px;
+  width:125px;
+  height:80px;
+  cursor:pointer;
+}
+#textl{
+  position:absolute;
+  left:35px;
+  top:70px;
+  font-size: 15px;
+  color:rgb(216,216,216);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#kaiguan{
+  position:absolute;
+  right:0px;
+  top:205px;
+  width:125px;
+  height:80px;
+  cursor:pointer;
+}
+#texts{
+  position:absolute;
+  right:15px;
+  top:170px;
+  font-size: 15px;
+  color:rgb(216,216,216);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#dingzhidianzu{
+  position:absolute;
+  top:205px;
+  left:0px;
+  width:125px;
+  height:80px;
+  cursor:pointer;
+}
+#textr{
+  position:absolute;
+  left:5px;
+  top:170px;
+  font-size: 15px;
+  color:rgb(216,216,216);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#A{
+  position:absolute;
+  top:305px;
+  left:0px;
+  width:125px;
+  height:80px;
+  cursor:pointer;
+}
+#texta{
+  position:absolute;
+  left:15px;
+  top:270px;
+  font-size: 15px;
+  color:rgb(216,216,216);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#V{
+  position:absolute;
+  right:0px;
+  top:305px;
+  width:125px;
+  height:80px;
+  cursor:pointer;
+}
+#textv{
+  position:absolute;
+  right:15px;
+  top:270px;
+  font-size: 15px;
+  color:rgb(216,216,216);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#equipment img{
+  width:125px;
+  height:80px;
+  z-index: 1;
+  cursor:pointer;
+}
+#tips{
+  position:absolute;
+  top:400px;
+  font-size:25px;
+  color:rgb(216,216,216);
+  font-family: 'Times New Roman', Times, serif;
+}
+#tips2{
+  position:absolute;
+  top:485px;
+  font-size:25px;
+  color:rgb(216,216,216);
+  font-family: 'Times New Roman', Times, serif;
+}
+#injecttips{
+  width:82%;
+  background-color: rgb(173, 173, 57);
+  opacity: 0;
+  position: absolute;
+  left:250px;
+}
