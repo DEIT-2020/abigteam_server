@@ -169,7 +169,7 @@ li material-fab {
     color:rgb(216,216,216);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
-  #dengpao{
+  #daoxian{
     position:absolute;
     top:105px;
     left:0px;
@@ -276,3 +276,86 @@ li material-fab {
     position: absolute;
     left:250px;
   }
+  #baogao{
+    position:absolute;
+    right:0;
+    width:300px;
+    height:380px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius:20px;
+    opacity: 0;
+  }
+  #dianchiguige{
+    position:absolute;
+    top:0px;
+    left:10px;
+  }
+  #dianchi{
+    position:absolute;
+    top:40px;
+    width:80px;
+    left:10px;
+  }
+  #jiayi{
+    position:absolute;
+    top:40px;
+    left:90px;
+  }
+  #dianyabiaodushu{
+    position:absolute;
+    top:80px;
+    left:10px;
+  }
+  #dianyabiao{
+    position:absolute;
+    top:120px;
+    width:80px;
+    left:10px;
+  }
+  #dianliubiaodushu{
+    position:absolute;
+    top:160px;
+    left:10px;
+  }
+  #dianliubiao{
+    position: absolute;
+    top:200px;
+    width:80px;
+    left:10px;
+  }
+  #jisuanzuzhi{
+    position:absolute;
+    top:240px;
+    left:10px;
+  }
+  #zuzhi{
+    position:absolute;
+    top:280px;
+    width:80px;
+    left:10px;
+  }
+  #closed{
+    position:absolute;
+    top:0px;
+    right:0px;
+  }
+  #trueanswer{
+    position:absolute;
+    top:265px;
+    left:100px;
+    color:green;
+    opacity:0;
+  }
+  #falseanswer{
+    position:absolute;
+    top:265px;
+    left:100px;
+    color:red;
+    opacity:0;
+  }
+  #sure{
+    position: absolute;
+    bottom:0px;
+    right:0px;
+  }
+

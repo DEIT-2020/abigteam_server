@@ -40,8 +40,8 @@
           <div id="dianziqicai" >
           <div id="dianchizu" draggable="true" on-dragstart="move('#dianchizu')"><img src="picture/电池组.png"></div>
           <p id="texte">电池组（E）</p>
-          <div id="dengpao" draggable="true" on-dragstart="move('#dengpao')"><img src="picture/灯泡.png"></div>
-          <p id="textl">灯泡（L）</p>
+          <div id="daoxian" draggable="true" (click)="inject()"><img src="picture/导线.png"></div>
+          <p id="textl">导线</p>
           <div id="kaiguan" draggable="true" on-dragstart="move('#kaiguan')"><img src="picture/开关.png"></div>
           <p id="texts">开关（S）</p>
           <div id="dingzhidianzu" draggable="true" on-dragstart="move('#dingzhidianzu')"><img src="picture/定值电阻.png"></div>
@@ -67,13 +67,13 @@
             <material-input id="myfilename" label="未命名文件"></material-input>
             <material-icon icon="border_color" id="pencil" ></material-icon>
             <!--material-icon icon="camera_alt" id="screenshot" (onclick)="shotscreen()"></material-icon-->
-            <material-icon icon="description" id="report"></material-icon>
+            <material-icon icon="description" id="report" (click)="producereport()"></material-icon>
             <p id="producereport">生成报告</p>
-            <material-icon icon="delete" id="trash" (click)="inject()"></material-icon>
+            <material-icon icon="delete" id="trash" (click)="inject()" (trigger)="closereport()"></material-icon>
             <p id="restart">重置</p>
             <material-icon icon="add" id="lianxian" (click)="inject()"></material-icon>
             <p id="startinject">连接电路</p>
-            <div id="touxiang"><img src="favicon.png" alt=""></div>
+            <div id="touxiang"><img src="logo.jpg" alt="" style="max-width:100%"></div>
             <!--material-icon icon="folderopen"></material-icon-->
           </div>
         </header>
@@ -86,17 +86,21 @@
       
     </div-->
     <div id="content_body" >
-      <!--material-expansionpanel flat name="Section 1" [showSaveCancel]="false">
-        The first section of the side panel!
-      </material-expansionpanel>
-    
-      <material-expansionpanel flat name="Section 2" [showSaveCancel]="false">
-        The second section of the side panel!
-      </material-expansionpanel>
-    
-      <material-expansionpanel flat name="Section 3" [showSaveCancel]="false">
-        The last section of the side panel!
-      </material-expansionpanel-->
+      <div id="baogao">
+      <p id="dianchiguige">电池规格（V/伏特）</p>
+      <material-input id="dianchi"  type="number" keypressUpdate [(ngModel)]="value"></material-input>
+      <material-fab id="jiayi"  mini raised (trigger)="increaseValue()"> +1</material-fab>
+      <p id="dianyabiaodushu">电压表读数（V/伏特）</p>
+      <material-input id="dianyabiao" type="number" fourDecimals disabled keypressUpdate [(ngModel)]="decimalValue1"></material-input>
+      <p id="dianliubiaodushu">电流表读数（A/安培）</p>
+      <material-input id="dianliubiao" type="number" fourDecimals disabled keypressUpdate [(ngModel)]="decimalValue2"></material-input>
+      <p id="jisuanzuzhi"> 请你计算出该电阻的阻值（Ω/欧姆）</p>
+      <material-input id="zuzhi" type="number" keypressUpdate [(ngModel)]="R"></material-input>
+      <material-button id="closed" raised class="red" (click)="closereport()">关闭</material-button>
+      <material-button id="sure" raised class="red" (click)="feedback()">确定</material-button>
+      <p id="trueanswer">恭喜你！实验成功了！</p>
+      <p id="falseanswer">检查一下是不是哪里做错了呢</p>
+      </div>
       <material-chip id="injecttips" removeable='true' (remove)="removechip()">单击需要连接的物体，双击下一个需要连接的物体，则在这两个物体间连接了导线。注意：单击电压表，再双击所要与之并联的器件即可将电压表接入电路</material-chip>
       <canvas id='mycanvas' dropzone="true"></canvas></div>
     </div>

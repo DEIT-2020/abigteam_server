@@ -11,6 +11,9 @@ import 'dart:math';
 import 'package:angular_components/utils/color/color.dart';
 import 'package:angular_components/utils/color/material.dart';
 import 'package:angular/angular.dart';
+import 'package:angular_components/material_expansionpanel/material_expansionpanel.dart';
+import 'package:angular_components/material_expansionpanel/material_expansionpanel_auto_dismiss.dart';
+import 'package:angular_components/material_expansionpanel/material_expansionpanel_set.dart';
 import 'package:angular_components/material_chips/material_chip.dart';
 import 'package:angular_components/material_chips/material_chips.dart';
 import 'package:angular_components/angular_components.dart';
@@ -37,6 +40,7 @@ import 'todo_list_service.dart';
     materialInputDirectives,
     NgFor,
     NgIf,
+    NgModel,
     DeferredContentDirective,
     MaterialButtonComponent,
     MaterialPersistentDrawerDirective,
@@ -47,6 +51,8 @@ import 'todo_list_service.dart';
     MaterialChipComponent,
     MaterialChipsComponent,
     displayNameRendererDirective,
+    materialNumberInputDirectives,
+    MaterialPercentInputDirective,
   ],
   providers: [ClassProvider(TodoListService)],
 )
@@ -57,6 +63,13 @@ class TodoListComponent implements OnInit {
   List<String> items = [];
   String newTodo = '';
   final chips = <Chip>[];
+  num value = 0;
+  num decimalValue1=0;
+  num decimalValue2 =0;
+  num R=0;
+  num r=20;
+  bool valueequal=false;
+  bool aisin=false;
   TodoListComponent(this.todoListService);
 
   @override
@@ -75,6 +88,27 @@ class TodoListComponent implements OnInit {
     chip.style.opacity=0.toString();
     }
   String remove(int index) => items.removeAt(index);
+  void increaseValue() {
+    value += 1;
+    if(valueequal==true){
+      decimalValue1=value;
+    }
+    if(aisin==true){
+      decimalValue2 =value/r;
+    }
+  }
+  void feedback(){
+    var trueanswer=document.getElementById('trueanswer');
+    var falseanswer=document.getElementById('falseanswer');
+    if(R!=20||aisin==false||valueequal==false){
+      falseanswer.style.opacity=100.toString();
+      trueanswer.style.opacity=0.toString();
+    }
+    else{
+      trueanswer.style.opacity=100.toString();
+      falseanswer.style.opacity=0.toString();
+    }
+  }
       void move(String id){
         Element drag = querySelector(id); 
         
@@ -119,14 +153,13 @@ class TodoListComponent implements OnInit {
         var injecttips=document.getElementById('injecttips');
         injecttips.style.opacity=100.toString();
         var dianchizuconnect=false;
-        var dengpaoconnect=false;
         var dingzhidianzuconnect=false;
         var kaiguanconnect=false;
         var vconnect=false;
         var aconnect=false;
+        aisin=false;
         //var startpoint=document.getElementById(id);
         var dianchizu=document.getElementById('dianchizu');
-        var dengpao=document.getElementById('dengpao');
         var dingzhidianzu=document.getElementById('dingzhidianzu');
         var kaiguan=document.getElementById('kaiguan');
         var v=document.getElementById('V');
@@ -140,30 +173,6 @@ class TodoListComponent implements OnInit {
         //var endpoint1=document.getElementById('E2');
         dianchizu.onClick.listen((e){
          var startpoint=document.getElementById('dianchizu');
-         dengpao.onDoubleClick.listen((e){ 
-          if(dianchizuconnect==false){
-           
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-          var x=startpoint.offsetLeft+125;
-          var y=startpoint.offsetTop-20;
-          context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=dengpao.offsetLeft+125;
-          var end_y1=dengpao.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          dianchizuconnect=true;}
-        });
-        
          dingzhidianzu.onDoubleClick.listen((e){ 
           if(dianchizuconnect==false){
             
@@ -210,7 +219,7 @@ class TodoListComponent implements OnInit {
           //context.lineTo(end_x1, end_y1);
          //context.closePath();
           context.stroke();
-          
+          aisin=true;
           dianchizuconnect=true;}
           });
           
@@ -268,6 +277,7 @@ class TodoListComponent implements OnInit {
           context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1+125,end_y1);
           //context.closePath();
           context.stroke();
+          valueequal=true;
           vconnect=true;
           }
           //context.fillStyle='blue';
@@ -277,35 +287,6 @@ class TodoListComponent implements OnInit {
           //context.fill();
         });
         
-         dengpao.onDoubleClick.listen((e){ 
-          if(vconnect==false){
-            
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft+10;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=dengpao.offsetLeft+10;
-          var end_y1=dengpao.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          context.beginPath();
-          context.moveTo(x+105,y);
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1+125,end_y1);
-          //context.lineTo(end_x1+125, end_y1);
-          //context.closePath();
-          context.stroke();
-          vconnect=true;}
-        });
         
          dingzhidianzu.onDoubleClick.listen((e){ 
           if(vconnect==false){
@@ -334,6 +315,7 @@ class TodoListComponent implements OnInit {
           //context.lineTo(end_x1+125, end_y1);
           //context.closePath();
           context.stroke();
+          valueequal=true;
           vconnect=true;}
         });
         
@@ -364,6 +346,9 @@ class TodoListComponent implements OnInit {
           //context.lineTo(end_x1+125, end_y1);
           //context.closePath();
           context.stroke();
+          value=0;
+          valueequal=false;
+          aisin=true;
           vconnect=true;}
           });
           
@@ -394,117 +379,9 @@ class TodoListComponent implements OnInit {
           //context.lineTo(end_x1+125, end_y1);
           //context.closePath();
           context.stroke();
+          decimalValue1=0;
+          valueequal=false;
           vconnect=true;}
-          });
-        });
-        dengpao.onClick.listen((e){
-          var startpoint=document.getElementById('dengpao');
-        dianchizu.onDoubleClick.listen((e){  
-          if(dengpaoconnect==false){
-           
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=dianchizu.offsetLeft;
-          var end_y1=dianchizu.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          
-          dengpaoconnect=true;}
-          
-          //context.fillStyle='blue';
-          //context.beginPath();
-          //context.arc(x,y,5,0,2*pi);
-          //context.arc(end_x1,end_y1,5,0,2*pi);
-          //context.fill();
-        });
-        
-        
-        
-         dingzhidianzu.onDoubleClick.listen((e){ 
-          if(dengpaoconnect==false){
-            
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=dingzhidianzu.offsetLeft+125;
-          var end_y1=dingzhidianzu.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          
-          dengpaoconnect=true;}
-        });
-        
-        a.onDoubleClick.listen((e){ 
-          if(dengpaoconnect==false){
-           
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=a.offsetLeft+125;
-          var end_y1=a.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          
-          dengpaoconnect=true;}
-          });
-          
-          kaiguan.onDoubleClick.listen((e){ 
-          if(dengpaoconnect==false){
-            
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=kaiguan.offsetLeft+125;
-          var end_y1=kaiguan.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          
-          dengpaoconnect=true;}
           });
         });
         dingzhidianzu.onClick.listen((e){
@@ -539,33 +416,6 @@ class TodoListComponent implements OnInit {
           //context.arc(end_x1,end_y1,5,0,2*pi);
           //context.fill();
         });
-        
-         dengpao.onDoubleClick.listen((e){ 
-          if(dingzhidianzuconnect==false){
-            
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=dengpao.offsetLeft+125;
-          var end_y1=dengpao.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          
-          dingzhidianzuconnect=true;}
-        });
-        
-        
         a.onDoubleClick.listen((e){ 
           if(dingzhidianzuconnect==false){
            
@@ -587,7 +437,7 @@ class TodoListComponent implements OnInit {
           //context.lineTo(end_x1, end_y1);
           //context.closePath();
           context.stroke();
-          
+          aisin=true;
           dingzhidianzuconnect=true;}
           });
           
@@ -649,30 +499,7 @@ class TodoListComponent implements OnInit {
           //context.fill();
         });
         
-         dengpao.onDoubleClick.listen((e){ 
-          if(aconnect==false){
-            
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=dengpao.offsetLeft+125;
-          var end_y1=dengpao.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          
-          aconnect=true;}
-        });
+         
         
          dingzhidianzu.onDoubleClick.listen((e){ 
           if(aconnect==false){
@@ -758,30 +585,7 @@ class TodoListComponent implements OnInit {
           //context.fill();
         });
         
-         dengpao.onDoubleClick.listen((e){ 
-          if(kaiguanconnect==false){
-            
-          context.strokeStyle = 'red';
-          context.lineWidth = 5;
-           context.shadowOffsetX=4;
-          context.shadowOffsetY=4;
-          context.shadowBlur=3;
-          context.shadowColor='rgba(0,0,0,0.2)';
-          var x=startpoint.offsetLeft;
-          var y=startpoint.offsetTop-20;
-          context.beginPath();
-          // 起点
-          context.moveTo(x,y);
-          // 终点
-          var end_x1=dengpao.offsetLeft+125;
-          var end_y1=dengpao.offsetTop-20;
-          context.quadraticCurveTo(end_x1,(end_y1+y)/2,end_x1,end_y1);
-          //context.lineTo(end_x1, end_y1);
-          //context.closePath();
-          context.stroke();
-          
-          kaiguanconnect=true;}
-        });
+         
         
          dingzhidianzu.onDoubleClick.listen((e){ 
           if(kaiguanconnect==false){
@@ -813,7 +617,7 @@ class TodoListComponent implements OnInit {
            
           context.strokeStyle = 'red';
           context.lineWidth = 5;
-           context.shadowOffsetX=4;
+          context.shadowOffsetX=4;
           context.shadowOffsetY=4;
           context.shadowBlur=3;
           context.shadowColor='rgba(0,0,0,0.2)';
@@ -829,10 +633,31 @@ class TodoListComponent implements OnInit {
           //context.lineTo(end_x1, end_y1);
           //context.closePath();
           context.stroke();
-          
+          aisin=true;
           kaiguanconnect=true;}
           });
         });
+}
+void producereport(){
+  var report=document.getElementById('baogao');
+  report.style.opacity=100.toString();
+  if(valueequal==true){
+    decimalValue1=value;
+  }
+  if(aisin==true){
+    decimalValue2=value/r;
+  }
+}
+void closereport(){
+  var report=document.getElementById('baogao');
+  var trueanswer=document.getElementById('trueanswer');
+  var falseanswer=document.getElementById('falseanswer');
+  value=5;
+  decimalValue1=0;
+  decimalValue2=0;
+  report.style.opacity=0.toString();
+  trueanswer.style.opacity=0.toString();
+  falseanswer.style.opacity=0.toString();
 }
 }
 class Chip implements HasUIDisplayName {
