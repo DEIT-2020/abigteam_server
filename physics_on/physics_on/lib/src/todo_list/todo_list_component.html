@@ -90,6 +90,8 @@
       <p id="dianchiguige">电池规格（V/伏特）</p>
       <material-input id="dianchi"  type="number" keypressUpdate [(ngModel)]="value"></material-input>
       <material-fab id="jiayi"  mini raised (trigger)="increaseValue()"> +1</material-fab>
+      <p id="xingmingmingzi">用户名</p>
+      <material-input id="xingming" type="string" fourDecimals disabled keypressUpdate [(ngModel)]="username"></material-input>
       <p id="dianyabiaodushu">电压表读数（V/伏特）</p>
       <material-input id="dianyabiao" type="number" fourDecimals disabled keypressUpdate [(ngModel)]="decimalValue1"></material-input>
       <p id="dianliubiaodushu">电流表读数（A/安培）</p>

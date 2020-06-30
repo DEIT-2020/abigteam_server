@@ -4,13 +4,13 @@ class User extends ManagedObject<_User> implements _User {}
 
 class _User {
   @primaryKey //数据库主键
-  int id;
-  @Column(unique: true)
+  double id;
+  @Column(unique: false)
   String username;
-  @Column(unique: true)
-  int r;
-  @Column(unique: true)
-  int i;
-  @Column(unique: true)
-  int u;
+  @Column(unique: false)
+  double r;
+  @Column(unique: false)
+  double i;
+  @Column(unique: false)
+  double u;
 }

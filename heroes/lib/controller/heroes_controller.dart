@@ -1,6 +1,8 @@
 import 'package:aqueduct/aqueduct.dart';
 import 'package:heroes/heroes.dart';
 import 'package:heroes/model/user.dart';
+// import 'package:heroes/model/experiment.dart';
+
 // class HeroesController extends ResourceController {
 //   HeroesController(this.context);
 
@@ -104,82 +106,56 @@ import 'package:heroes/model/user.dart';
 // import 'package:aqueduct/aqueduct.dart';
 // import 'package:heroes/heroes.dart';
 // import 'package:heroes/model/hero.dart';
-class UserController extends ResourceController {
-   UserController(this.context);
+class HeroesController extends ResourceController {
+  HeroesController(this.context);
 
   final ManagedContext context;
+  //（前端给我们一对id；数组）
+@Operation.get()
+  Future<Response> getAllHeroes() async {
+    final heroQuery = Query<User>(context);
+    final heroes = await heroQuery.fetch();
 
-
-@Operation.get('username')
-Future<Response> getAllHeroes({@Bind.path('username') String username}) async {
-  final heroQuery = Query<User>(context);
-  if (username != null) {
-    heroQuery.where((user) => user.username).contains(username, caseSensitive: false);
+    return Response.ok(heroes);
   }
-  final heroes = await heroQuery.fetch();
-     if (heroes != null)
-     { return Response.ok("ok");}
+}
+  //  @Operation.post()
+  //     FutureOr <Response> createChat(@Bind.body() Chat chat) async {
+  //       // POST /project
 
-   if (heroes == false) {
-      return Response.notFound();
-     }
+  //       print("post");
+  //       final Map<String, dynamic> body = await request.body.decode();
+  //       final name =body['name'] as String;
+  //       print(" 1) name ==> $name");
 
+  //       //return Response.ok({"key": "value"});
+  //     }
+//   @Operation.post()//添加一篇文章
+//   FutureOr<Response> insertExperiment(
+//       @Bind.body() Experiment time) async {
+//     Experiment.time = DateTime.now();
+//   //  Experiment.u= new   
+// //插入一条数据
+//     final result = await context.insertObject<Experiment>(time);
+//     return Response.ok(result);
+//   }
+  // @Operation.post()
+  // Future<Response> addCity(@Bind.body() City city) async {
+  //   final insertedCity = await context.insertObject(city);
 
-  // @Operation.get()
-  // Future<Response> getAllHeroes() async {
- 
-  //   final heroQuery = Query<User>(context);
-  //   final heroes = await heroQuery.fetch();
-  //  if (username == null) {
-  //     return Response.notFound();
-  //   return Response.ok(heroes);
+  //   return Response.ok(insertedCity);
   // }
-// @Operation.post()//post侧重于数据的增加，可以用来注册
-//   Future<Response> postID() async {
-//     final loginQuery = Query<Hero>(context)..where((h) => h.id).equalTo(id);//QUERY<__>创建新的[查询]查询将被发送到[上下文]描述的数据库。
+//    @Operation.post() //添加一篇文章
+//   FutureOr<Response> insertArticle(
+//       @Bind.body(ignore: ["createData"]) Article article) async {
+// //这里可以直接转为实体，但需要注意的是@Bind.body里的参数含义如下
+// //ignore表示忽略哪些字段
+// //reject表示拒绝接收哪些字段
+// //require表示哪些字段必须有
+// //啥都不填表示参数如果不传则为空
+//     article.createDate = DateTime.now();
+// //插入一条数据
+//     final result = await context.insertObject<Article>(article);
+//     return Result.data(result);
+//     return Response.ok(hero);
 //   }
-//   @Operation.post('login')
-//   Future<Response> getHeroByID(@Bind.path('username') String username) async {
-//       print(username);
-//     final heroQuery = Query<User>(context)..where((user) => user.username).equalTo(username);//final是不更改的变量，这里是把id赋给变量
-// //从request里面取数据，context帮助我们去request里面取数据
-//     final hero = await heroQuery.fetchOne();//fetchone从数据库中获取int类型的变量
-
-//     if (hero == null) {
-//       return Response.notFound();
-//     }
-    //  if (request.path.variables.containsKey('id')) {
-    // final id = int.parse(request.path.variables['id']);
-    // final hero = _heroes.firstWhere((hero) => hero['id'] == id, orElse: () => null);
-    // if (hero == null) {
-    //   return Response.notFound();
-    // }
-//     return Response.ok("");
-//   }
-//   @Operation.post('login')
-//   Future<Response> login(@Bind.path('username') String username) async {
-//       print(username);
-// //     final heroQuery = Query<User>(context)..where((user) => user.username).equalTo(username);//final是不更改的变量，这里是把id赋给变量
-// // //从request里面取数据，context帮助我们去request里面取数据
-// //     final hero = await heroQuery.fetchOne();//fetchone从数据库中获取int类型的变量
-
-// //     if (hero == null) {
-// //       return Response.notFound();
-// //     }
-//     //  if (request.path.variables.containsKey('id')) {
-//     // final id = int.parse(request.path.variables['id']);
-//     // final hero = _heroes.firstWhere((hero) => hero['id'] == id, orElse: () => null);
-//     // if (hero == null) {
-//     //   return Response.notFound();
-//     // }
-//     return Response.ok("");
-//   }
-//   //  @override
-//   // Future<RequestOrResponse> handle(Request request) async {
-//   //   return Response.ok(_login);
-//   // }
-  
-// }
-// }}
-}
-}

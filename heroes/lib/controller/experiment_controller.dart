@@ -112,14 +112,14 @@ class ExperimentController extends ResourceController {
   final ManagedContext context;
   //（前端给我们一对id；数组）
 
-@Operation.post()
+@Operation.post('username')
 Future<Response> createNote() async {
   final Map<String,dynamic> body = await request.body.decode();
   final query = Query<User>(context)
     ..values.username = body['username'] as String
-    ..values.i = body['i'] as int 
-    ..values.r =body['r'] as int
-    ..values.u = body['u'] as int;
+    ..values.i = body['i'] as double 
+    ..values.r =body['r'] as double
+    ..values.u = body['u'] as double;
 
   final inserteduser = await query.insert();
 
