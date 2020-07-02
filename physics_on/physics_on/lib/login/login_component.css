@@ -1,0 +1,44 @@
+#login{
+    position:absolute;
+    background-color:rgba(255,255,255,0.5);
+    width:400px;
+    height:300px;
+    left:560px;
+    top:200px;
+  }
+  #backimage{
+    width: 100%;
+    height:700px;
+  }
+  #username{
+    position: absolute;
+    top:140px;
+    left:140px;
+  }
+  #denglu{
+    position: absolute;
+    bottom: 50px;
+    left:170px;
+  }
+  #mylogo{
+    position:absolute;
+    text-align: center;
+    left:175px;
+    width:60px;
+    height:60px;
+    border-radius:30px;
+    top:50px;
+    overflow:hidden;
+    cursor:pointer;
+  }
+  #yonghuming{
+    position: absolute;
+    top:140px;
+    left:80px;
+    font-weight: bolder;
+  }
+  #back{
+    width: 100%;
+    height:900px;
+  
+  }

@@ -7,7 +7,7 @@ import 'dart:svg';
 import 'dart:web_gl';
 import 'dart:math';
 
-
+import 'package:http/http.dart' as http;
 import 'package:angular_components/utils/color/color.dart';
 import 'package:angular_components/utils/color/material.dart';
 import 'package:angular/angular.dart';
@@ -63,6 +63,7 @@ class TodoListComponent implements OnInit {
   List<String> items = [];
   String newTodo = '';
   final chips = <Chip>[];
+  String username ='';
   num value = 0;
   num decimalValue1=0;
   num decimalValue2 =0;
@@ -97,7 +98,7 @@ class TodoListComponent implements OnInit {
       decimalValue2 =value/r;
     }
   }
-  void feedback(){
+  void feedback()async{
     var trueanswer=document.getElementById('trueanswer');
     var falseanswer=document.getElementById('falseanswer');
     if(R!=20||aisin==false||valueequal==false){
@@ -108,6 +109,11 @@ class TodoListComponent implements OnInit {
       trueanswer.style.opacity=100.toString();
       falseanswer.style.opacity=0.toString();
     }
+     var url = 'https://127.0.0.1:8888/experiment/$username';
+var response = await http.post(url, body: {'username': username, 'i': decimalValue2,'r':R,'u':decimalValue1});
+print('Response status: ${response.statusCode}');
+print('Response body: ${response.body}');
+print(await http.read('https://127.0.0.1:8888/experiment/$username'));
   }
       void move(String id){
         Element drag = querySelector(id); 

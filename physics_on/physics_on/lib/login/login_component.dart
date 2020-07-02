@@ -3,6 +3,9 @@ import 'package:angular_components/material_button/material_button.dart';
 import 'package:angular_components/angular_components.dart';
 import 'dart:math';
 import 'dart:html';
+import 'package:physics_on/src/todo_list/routes.dart';
+import 'package:angular_router/angular_router.dart';
+import 'package:physics_on/src/todo_list/route_paths.dart';
 // AngularDart info: https://angulardart.dev
 // Components info: https://angulardart.dev/components
 
@@ -14,7 +17,9 @@ import 'dart:html';
               LoginComponent,
               materialInputDirectives,
               MaterialButtonComponent,
+              routerDirectives,
               ],
+  exports: [RoutePaths, Routes],
 )
 class LoginComponent {
   // Nothing here yet. All logic is in TodoListComponent.
