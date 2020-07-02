@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:aqueduct/aqueduct.dart';
 import 'package:heroes/heroes.dart';
 import 'package:heroes/model/user.dart';
@@ -108,26 +106,18 @@ import 'package:heroes/model/user.dart';
 // import 'package:aqueduct/aqueduct.dart';
 // import 'package:heroes/heroes.dart';
 // import 'package:heroes/model/hero.dart';
-class ExperimentController extends ResourceController {
-  ExperimentController(this.context);
+class HeroesController extends ResourceController {
+  HeroesController(this.context);
 
   final ManagedContext context;
   //（前端给我们一对id；数组）
+@Operation.get()
+  Future<Response> getAllHeroes() async {
+    final heroQuery = Query<User>(context);
+    final heroes = await heroQuery.fetch();
 
-@Operation.post('username')
-Future<Response> createNote() async {
-  final Map<String,dynamic> body = await request.body.decode();
-  final query = Query<User>(context)
-    ..values.username = body['username'] as String
-    ..values.i = double.parse(body['i'].toString()) 
-    ..values.r =double.parse(body['r'].toString())
-    //..values.u = body['u'] as double;
-    ..values.u =double.parse(body['u'].toString());
-
-  final inserteduser = await query.insert();
-
-  return Response.ok(inserteduser);
-}
+    return Response.ok(heroes);
+  }
 }
   //  @Operation.post()
   //     FutureOr <Response> createChat(@Bind.body() Chat chat) async {

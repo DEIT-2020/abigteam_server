@@ -5,7 +5,9 @@ class ReportController extends ResourceController {
   ReportController(this.context);
 
   final ManagedContext context;
-
+MyResourceController() {
+    policy.allowedMethods = ["GET"];
+  }
 //    @Operation.get('username')
 //   Future<Response> getHeroByID(@Bind.query('username') int username) async {
 //     final userQuery = Query<User>(context)..where((user) => user.username).equalTo(username);//final是不更改的变量，这里是把id赋给变量
@@ -16,14 +18,37 @@ class ReportController extends ResourceController {
 //       return Response.notFound();
 //     }
 // }
+// @Operation.get('username')
+// Future<Response> getAllHeroes({@Bind.query('username') String username}) async {
+//   final heroQuery = Query<User>(context);
+//   if (username != null) {
+//     heroQuery.where((user) => user.username).contains(username, caseSensitive: false);
+//   }
+//   final heroes = await heroQuery.fetch();
+
+//   return Response.ok(heroes);
+// }
+// @Operation.get('username')
+// Future<Response> getHeroByID(@Bind.path('username') String username) async {
+//   final heroQuery = Query<User>(context)
+//     ..where((user) => user.username).equalTo(username);    
+//   final hero = await heroQuery.fetchOne();
+//   if (hero == null) {
+//     return Response.notFound();
+//   }
+//   return Response.ok(hero);
+// }
 @Operation.get('username')
-Future<Response> getAllHeroes({@Bind.query('username') String username}) async {
+Future<Response> getAllHeroes({@Bind.path('username') String username}) async {
   final heroQuery = Query<User>(context);
   if (username != null) {
     heroQuery.where((user) => user.username).contains(username, caseSensitive: false);
   }
   final heroes = await heroQuery.fetch();
+     if (heroes != null)
+     { return Response.ok(heroes);}
 
-  return Response.ok(heroes);
-}
-}
+   if (heroes == null) {
+      return Response.notFound();
+     }
+}}
