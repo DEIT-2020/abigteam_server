@@ -67,9 +67,6 @@
             <material-input id="myfilename" label="未命名文件"></material-input>
             <material-icon icon="border_color" id="pencil" ></material-icon>
             <!--material-icon icon="camera_alt" id="screenshot" (onclick)="shotscreen()"></material-icon-->
-            <material-icon icon="camera_alt" id="history" [routerLink]="RoutePaths.history.toUrl()"
-            [routerLinkActive]="'active'"></material-icon>
-            <p id="gotohistory">查看历史记录</p>
             <material-icon icon="description" id="report" (click)="producereport()"></material-icon>
             <p id="producereport">生成报告</p>
             <material-icon icon="delete" id="trash" (click)="inject()" (trigger)="closereport()"></material-icon>
@@ -99,11 +96,8 @@
       <material-input id="dianliubiao" type="number" fourDecimals disabled keypressUpdate [(ngModel)]="decimalValue2"></material-input>
       <p id="jisuanzuzhi"> 请你计算出该电阻的阻值（Ω/欧姆）</p>
       <material-input id="zuzhi" type="number" keypressUpdate [(ngModel)]="R"></material-input>
-      <p id="yourname">用户名：</p>
-      <material-input id="uname" type="String" keypressUpdate [(ngModel)]="name"></material-input>
       <material-button id="closed" raised class="red" (click)="closereport()">关闭</material-button>
       <material-button id="sure" raised class="red" (click)="feedback()">确定</material-button>
-      <material-button id="save" raised class="red" (click)="save()">保存</material-button>
       <p id="trueanswer">恭喜你！实验成功了！</p>
       <p id="falseanswer">检查一下是不是哪里做错了呢</p>
       </div>

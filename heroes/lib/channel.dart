@@ -2,7 +2,7 @@ import 'heroes.dart';
 import 'controller/user_controller.dart';
 import 'controller/report_controller.dart';
 import 'controller/experiment_controller.dart';
-import 'controller/heroes_controller.dart';
+
 
 
 /// This type initializes an application.
@@ -35,11 +35,7 @@ class AppChannel extends ApplicationChannel {
   @override
   Controller get entryPoint {
     final router = Router();
-     router
-      .route("/example")
-      .linkFunction((request) async {
-        return Response.ok({"key": "value"});
-      });
+  
 
       router
     .route("/user/[:username]")

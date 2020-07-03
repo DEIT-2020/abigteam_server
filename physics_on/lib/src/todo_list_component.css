@@ -1,0 +1,83 @@
+/*ul {
+  list-style: none;
+  padding-left: 0;
+}*/
+
+  /*
+li {line-height: 3em;
+}
+*/
+/*
+li:hover {
+  background-color: #EEEEEE;
+}*/
+/*
+li material-checkbox {
+  vertical-align: middle;
+}
+
+li material-fab {
+  float: right;
+  vertical-align: middle;
+}
+
+.done {
+  text-decoration: line-through;
+}
+header{
+  height: 80px;
+
+}*/
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cell td{
+  background-color:cornsilk;
+  border:1px solid black;
+  text-align:center;
+}
+.cell a{
+  cursor: pointer;
+}
+.heading p{
+  height: 40px;
+  margin:20px 25px 0px 25px;
+  float: right;
+  list-style-type:none;
+  vertical-align: middle;
+}
+.heading li{
+  width:100px;
+  height: 80px;
+  float: left;
+  list-style-type:none;
+  vertical-align: middle;
+}
+  /*
+li {line-height: 3em;
+}
+*/
+/*
+li:hover {
+  background-color: #EEEEEE;
+}*/
+
+li material-checkbox {
+  vertical-align: middle;
+}
+
+li material-fab {
+  float: right;
+  vertical-align: middle;
+}
+
+.done {
+  text-decoration: line-through;
+}
+header{
+  height: 80px;
+
+}

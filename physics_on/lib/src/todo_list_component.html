@@ -1,0 +1,107 @@
+<!-- Components info: https://webdev.dartlang.org/components -->
+
+
+<title>我的实验记录</title>
+<body>
+  <!--<header>
+    <div id="touxiang"><img src="logo.jpg" alt="" style="max-width:100%"></div>
+  </header>-->
+  <!--
+<div>
+  <material-input label="What do you need to do?"
+                  autoFocus floatingLabel style="width:80%"
+                  [(ngModel)]="newTodo"
+                  (keyup.enter)="add()">
+  </material-input>
+
+  <material-fab mini raised
+                (trigger)="add()"
+                [disabled]="newTodo.isEmpty">
+    <material-icon icon="add"></material-icon>
+  </material-fab>
+</div>
+
+<p *ngIf="items.isEmpty">
+  Nothing to do! Add items above.
+</p>
+
+<div *ngIf="items.isNotEmpty">
+  <ul>
+      <li *ngFor="let item of items; let i=index">
+        <material-checkbox #done materialTooltip="Mark item as done">
+        </material-checkbox>
+        <span [class.done]="done.checked">{{item}}</span>
+        <material-fab mini (trigger)="remove(i)">
+          <material-icon icon="delete"></material-icon>
+        </material-fab>
+      </li>
+  </ul>
+</div>
+-->
+<!--
+<li style="width:100px;height: 80px;float: left;list-style-type:none;vertical-align: middle; cursor: pointer;"> <img src="picture/logo.jpg" alt="用户头像" style="width:80px;height: 80px;"></li>
+<li id="zhuce" style="height: 80px;margin:25px;float: right;list-style-type:none;vertical-align: middle; cursor: pointer;"><a herf="" style="border-right:20px solid white;">注册</a></li>
+<li id="denglu" style="height: 80px;margin:25px;float: right;list-style-type:none;"><a style="border-right:20px solid white; cursor: pointer;">登录</a></li>
+<li id="shiyanbaogao" style="height: 80px;margin:25px;float: right;list-style-type:none;"><a style="border-right:20px solid white;	text-decoration:none; cursor: pointer;">实验报告</a></li>
+<li id="shiyan" style="height: 80px;margin:25px;float: right;list-style-type:none;"><a style="border-right:20px solid white; cursor: pointer;">实验</a></li>
+<li id="shiyanneirong" style="height: 80px;margin:25px;float: right;list-style-type:none;"><a style="border-right:20px solid white; cursor: pointer;">实验内容</a></li>
+-->
+<div style="min-width: 700px;">
+  <div class="heading">
+  
+  
+   <p id="denglu"><a style="cursor: pointer;">登录界面</a></p>
+   <p id="shiyan"><a style="cursor: pointer;">回到实验</a></p>
+   <li > <img src="picture/logo.jpg" alt="LOGO" style="width:80px;height: 80px;cursor: pointer;"></li>
+  </div>
+   <br><br><br>
+  </div>
+  <hr style="clear: both;">
+  <div>
+    <h1>我的实验记录</h1>
+    <div style="position: fixed;left: 20%;">
+
+
+  <material-input label="请输入您的用户名"
+  
+                  autoFocus floatingLabel style="display: inline;"
+                  [(ngModel)]="newTodo"
+                  (keyup.enter)="search()">
+  </material-input>
+  
+  <material-fab mini raised
+                (trigger)="search()"
+                [disabled]="newTodo.isEmpty"
+                style="position: relative;right: -200px;top: -45px;">
+
+                <material-icon icon="search" style="position: relative;right: 0;top: 0;" (click)="search()"></material-icon>
+   </material-fab>
+<!-- <material-icon icon="search"></material-icon>
+-->
+</div>
+<div style="position: fixed;left: 20%;top: 270px;">
+  <table class="cell">
+    <tr>
+      <td >ID</td>
+      <td >用户名</td>
+      <td >电压（U/V）</td>
+      <td >电流（I/A）</td>
+      <td >电阻（R/Ω）</td>
+      <td >操作</td>
+    </tr>
+    
+  </table>
+ <!--
+    <ul>
+    <li *ngFor="let item of items; let i=index">
+    
+      <span >{{item}}</span>
+      <span >{{item}}</span>
+      
+    
+    </li>
+</ul>
+-->
+</div>
+</div>
+</body>

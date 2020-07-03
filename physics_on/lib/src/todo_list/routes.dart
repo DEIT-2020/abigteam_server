@@ -3,8 +3,7 @@ import 'package:angular_router/angular_router.dart';
 import 'route_paths.dart';
 import 'hero_list_component.template.dart' as hero_list_template;
 import 'dashboard_component.template.dart' as dashboard_template;
-import 'login_component.template.dart' as login_template;
-import 'history_component.template.dart' as history_template;
+import 'package:physics_on/login/login_component.template.dart' as login_template;
 
 export 'route_paths.dart';
 
@@ -21,19 +20,14 @@ class Routes {
   routePath: RoutePaths.login,
   component: login_template.LoginComponentNgFactory,
   );
-  static final history = RouteDefinition(
-  routePath: RoutePaths.history,
-  component: history_template.HistoryComponentNgFactory,
-  );
 
   static final all = <RouteDefinition>[
     heroes,
     dashboard,
     login,
-    history,
      RouteDefinition.redirect(
     path: '',
-    redirectTo: RoutePaths.login.toUrl(),
+    redirectTo: RoutePaths.dashboard.toUrl(),
   ),
   ];
 }

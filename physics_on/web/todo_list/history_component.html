@@ -1,0 +1,30 @@
+<div id="global">
+    <div id="heading">
+      
+        </div>
+        <header class="material-header shadow" id="shadows">
+          <div class="material-header-row" id="mulu">
+            <p id="title">我的历史记录</p>
+           
+            <p id="gotologin" [routerLink]="RoutePaths.login.toUrl()"
+            [routerLinkActive]="'active'">登录界面</p>
+            <p id="gotoexperiment" [routerLink]="RoutePaths.heroes.toUrl()"
+            [routerLinkActive]="'active'">回到实验</p>
+            <div id="touxiang"><img src="logo.jpg" alt="" style="max-width:100%"></div>
+           
+          </div>
+        </header>
+     
+         
+       
+  
+      
+    <div id="content_body" >
+        <p id="whatis">用户名：</p>
+        <material-input id="username" keypressUpdate [(ngModel)]="name"></material-input>
+        <material-button id="view" raised class="red" (click)="report()">查看</material-button>
+        <div id="historylist">
+          <material-input id="show" disabled [(ngModel)]="showcontent"></material-input>
+        </div>
+      </div>
+      </div>

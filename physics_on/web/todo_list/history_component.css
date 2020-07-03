@@ -1,0 +1,103 @@
+#global{
+
+    width: 100%;
+
+    height: 780px;
+
+    background-color: #292c32; 
+  }
+             
+  #heading{
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-color: #23272b;
+    top:0px;
+  }
+ 
+  #content_body{
+    width: 100%;
+    height: 700px;
+    background-color: #27292f;
+  }
+  #title{
+    position:absolute;
+    top:0px;
+    left:30px;
+    font-size:35px ;
+    color:white;
+  }
+  #mulu{
+    height:80px;
+    width:100%;
+    background-color:#23272b;
+  }
+  #shadows{
+    background-color:#23272b;
+    height:80px;
+  }
+  #gotologin{
+    position:absolute;
+    right:194px;
+    color:white;
+  }
+  #gotologin:hover{
+    position:absolute;
+    right:194px;
+    color:yellowgreen;
+    cursor:pointer;
+  }
+  #gotoexperiment{
+    position:absolute;
+    right:120px;
+    color:white;
+  }
+  #gotoexperiment:hover{
+    position:absolute;
+    right:120px;
+    color:yellowgreen;
+    cursor:pointer;
+  }
+  #touxiang{
+    position:absolute;
+    width:60px;
+    height:60px;
+    border-radius:30px;
+    overflow:hidden;
+    right:40px;
+    cursor:pointer;
+  }
+  #username{
+    position:absolute;
+    width:200px;
+    left:400px;
+    top:100px;
+    color:whitesmoke;
+  }
+  #view{
+    position:absolute;
+    left:700px;
+    top:100px;
+    color:whitesmoke;
+  }
+  #whatis{
+    position:absolute;
+    left:300px;
+    top:80px;
+    font-size:25px;
+    color:whitesmoke;
+  }
+  #historylist{
+    position:absolute;
+    left:100px;
+    top:150px;
+    width:1000px;
+    height:500px;
+    background-color: rgba(255,255,255,0.5);
+  }
+  #show{
+    position:absolute;
+    left:30px;
+    top:20px;
+    width:900px;
+  }

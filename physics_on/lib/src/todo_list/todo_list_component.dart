@@ -1,7 +1,7 @@
 library global;
 import 'dart:async';
 import 'dart:html';
-import'dart:convert' as convert;
+import'dart:convert';
 import 'dart:html_common';
 import 'dart:svg';
 import 'dart:web_gl';
@@ -24,10 +24,6 @@ import 'package:angular_components/material_icon/material_icon.dart';
 import 'package:angular_components/material_list/material_list.dart';
 import 'package:angular_components/material_list/material_list_item.dart';
 import 'package:angular_components/material_toggle/material_toggle.dart';
-import 'package:http/http.dart' as http;
-import 'package:angular_router/angular_router.dart';
-import 'routes.dart';
-import 'route_paths.dart';
 
 
 import 'todo_list_service.dart';
@@ -57,10 +53,8 @@ import 'todo_list_service.dart';
     displayNameRendererDirective,
     materialNumberInputDirectives,
     MaterialPercentInputDirective,
-    routerDirectives,
   ],
   providers: [ClassProvider(TodoListService)],
-  exports: [RoutePaths, Routes],
 )
 
 class TodoListComponent implements OnInit {
@@ -69,17 +63,13 @@ class TodoListComponent implements OnInit {
   List<String> items = [];
   String newTodo = '';
   final chips = <Chip>[];
-  num value = 0.00;
-  num decimalValue1=0.00;
-  num decimalValue2 =0.00;
-  num R=0.00;
+  num value = 0;
+  num decimalValue1=0;
+  num decimalValue2 =0;
+  num R=0;
   num r=20;
-  double u;
-  double i;
-  double isr;
   bool valueequal=false;
   bool aisin=false;
-  var name='';
   TodoListComponent(this.todoListService);
 
   @override
@@ -107,28 +97,6 @@ class TodoListComponent implements OnInit {
       decimalValue2 =value/r;
     }
   }
-  Future<void> save() async {
-    var dianyabiao =document.querySelector('#dianyabiao');
-    var dianliubiao =document.querySelector('#dianliubiao');
-    var zuzhi =document.querySelector('#zuzhi');
-    var uname =document.querySelector('#uname');
-    u=decimalValue1;
-    i=decimalValue2;
-    isr=R;
-    var reportdata={
-      'username':name,
-      'i':decimalValue2,
-      'r':R,
-      'u':decimalValue1};
-    var path='http://localhost:8888/experiment/$name';
-    final response=await http.post(path,
-          body: convert.json.encode(reportdata),headers: {'content-type': 'application/json'}).then((response){
-            if(response.statusCode==200){window.alert('保存成功');}
-            else{window.alert('保存失败');}
-
-
-          }); //headers: {'content-type': 'application/json'}
-  }
   void feedback(){
     var trueanswer=document.getElementById('trueanswer');
     var falseanswer=document.getElementById('falseanswer');
@@ -140,14 +108,13 @@ class TodoListComponent implements OnInit {
       trueanswer.style.opacity=100.toString();
       falseanswer.style.opacity=0.toString();
     }
-
   }
       void move(String id){
         Element drag = querySelector(id); 
         
         drag.onDragStart.listen((event){
         //final startPos =(event.target as Element).getBoundingClientRect(); 
-        final data=convert.jsonEncode({
+        final data=jsonEncode({
         'id':drag.id,
         'x':event.client.x  -  drag.offsetLeft,
         'y':event.client.y  -  drag.offsetTop
@@ -169,7 +136,7 @@ class TodoListComponent implements OnInit {
  
         dropTarget.onDrop.listen((event){
         event.preventDefault(); 
-        final data = convert.jsonDecode(event.dataTransfer.getData('text')) ; 
+        final data = jsonDecode(event.dataTransfer.getData('text')) ; 
         final dragelement = document.getElementById(data ['id']);
         dropTarget.append(dragelement);
         dragelement.style.position = 'absolute';
